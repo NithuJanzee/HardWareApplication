@@ -1,12 +1,24 @@
+using HardWareApplication.Data;
+using HardWareApplication.Interface.IRepository.Users;
+using HardWareApplication.Interface.IService.Users;
+using HardWareApplication.Repository;
+using HardWareApplication.Service;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//Connection String
+builder.Services.AddDbContext<AppDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("HardWareApplicationConnectionString")));
 
+//Dependency Injection
+builder.Services.AddScoped<IUserAccountRepository, UserAccountRepository>();
+builder.Services.AddScoped<IUserAccountService, UserAccountService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
