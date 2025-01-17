@@ -1,0 +1,6 @@
+@HardWareApplication_HostAddress = http://localhost:5131
+
+GET {{HardWareApplication_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
