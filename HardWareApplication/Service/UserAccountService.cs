@@ -1,4 +1,6 @@
-﻿using HardWareApplication.Interface.IRepository.Users;
+﻿using HardWareApplication.DTO.UserAccounts;
+using HardWareApplication.Entity;
+using HardWareApplication.Interface.IRepository.Users;
 using HardWareApplication.Interface.IService.Users;
 
 namespace HardWareApplication.Service
@@ -10,6 +12,22 @@ namespace HardWareApplication.Service
         public UserAccountService(IUserAccountRepository userAccountRepository)
         {
             _UserAccountReposirory = userAccountRepository;
+        }
+
+        //Post New User
+        public async Task<UserAccounts> AddNewUserAccount(UserAccountRequestDTO requestDTO)
+        {
+            var userAccount = new UserAccounts
+            {
+                Name = requestDTO.Name,
+                Email = requestDTO.Email,
+                PhoneNumber = requestDTO.PhoneNumber
+            };
+
+           await _UserAccountReposirory.AddNewUserAccount(userAccount);
+
+            //Response
+          return userAccount;
         }
     }
 }
