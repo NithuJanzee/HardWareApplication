@@ -22,5 +22,13 @@ namespace HardWareApplication.Controllers
             var response = await _UserAcoountService.AddNewUserAccount(requestDTO);
             return Ok(response);
         }
+
+        //Get All UserAccounts
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsersAccounts()
+        {
+            var response = await _UserAcoountService.GetAllUsersAccounts();
+            return Ok(response);
+        }
     }
 }

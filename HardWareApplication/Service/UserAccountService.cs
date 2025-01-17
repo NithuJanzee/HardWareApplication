@@ -29,5 +29,11 @@ namespace HardWareApplication.Service
             //Response
           return userAccount;
         }
+
+        //Get All UserAccounts
+        public async Task<List<UserAccounts>> GetAllUsersAccounts()
+        {
+            return await _UserAccountReposirory.GetAllUsersAccounts();
+        }
     }
 }

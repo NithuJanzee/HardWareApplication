@@ -21,5 +21,12 @@ namespace HardWareApplication.Repository
             await _dbContext.SaveChangesAsync();
             return AddNewAccount.Entity;
         }
+
+        //Get All UserAccounts
+        public async Task<List<UserAccounts>> GetAllUsersAccounts()
+        {
+            var AllUsers = await _dbContext.userAccounts.ToListAsync();
+            return AllUsers;
+        }
     }
 }
