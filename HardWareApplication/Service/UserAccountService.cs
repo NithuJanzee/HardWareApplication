@@ -35,5 +35,26 @@ namespace HardWareApplication.Service
         {
             return await _UserAccountReposirory.GetAllUsersAccounts();
         }
+
+        //delete Users
+        public async Task<bool> DeleteUsers(Guid UserID)
+        {
+            var RemoveUsers = await _UserAccountReposirory.DeleteUsers(UserID);
+            return true;
+        }
+
+        //Find Usee By Id
+        public async Task<UserAccounts> GetByID(Guid UserID)
+        {
+            var FindUsers = await _UserAccountReposirory.GetByID(UserID);
+            return FindUsers;
+        }
+
+        //Update Users
+        public async Task<UserAccounts> UpdateUsers(Guid Id, UserAccountRequestDTO requestDTO)
+        {
+            var UpdateUsers = await _UserAccountReposirory.UpdateUsers(Id, requestDTO);
+            return UpdateUsers;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using HardWareApplication.Entity;
+﻿using HardWareApplication.DTO.UserAccounts;
+using HardWareApplication.Entity;
 
 namespace HardWareApplication.Interface.IRepository.Users
 {
@@ -6,5 +7,8 @@ namespace HardWareApplication.Interface.IRepository.Users
     {
         Task<UserAccounts> AddNewUserAccount(UserAccounts userAccounts);
         Task<List<UserAccounts>> GetAllUsersAccounts();
+        Task<UserAccounts> DeleteUsers(Guid UserId);
+        Task<UserAccounts> GetByID(Guid UserId);
+        Task<UserAccounts> UpdateUsers(Guid UserId, UserAccountRequestDTO requestDTO);
     }
 }
